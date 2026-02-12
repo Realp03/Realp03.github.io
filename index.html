@@ -6,10 +6,17 @@
   <title>My Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const links = document.querySelectorAll("a");
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // ✅ 1) Stagger fade-in for elements with .reveal
+    const items = document.querySelectorAll(".reveal");
+    items.forEach((el, i) => {
+      el.style.setProperty("--delay", `${0.12 * i}s`);
+    });
+    document.body.classList.add("loaded");
 
+    // ✅ 2) Fade-out transition for internal links
+    const links = document.querySelectorAll("a");
     links.forEach(link => {
       if (link.hostname === window.location.hostname) {
         link.addEventListener("click", function (e) {
@@ -121,5 +128,6 @@
   </div>
 </body>
 </html>
+
 
 
