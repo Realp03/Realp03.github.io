@@ -143,3 +143,19 @@ h2{
   color: rgba(184,208,255,.85);
   font-size: 13px;
 }
+
+@media (max-width: 600px){
+  .header{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-pic{
+    width:90px;
+    height:90px;
+  }
+
+  .card{
+    padding:20px;
+  }
+}
