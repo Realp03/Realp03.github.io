@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Me</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll("a");
+
+    links.forEach(link => {
+      // only animate internal links (same site)
+      if (link.hostname === window.location.hostname) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const url = this.href;
+
+          document.body.classList.add("fade-out");
+
+          setTimeout(() => {
+            window.location.href = url;
+          }, 400);
+        });
+      }
+    });
+  });
+</script>
+
 <body>
   <div class="container">
     <div class="card">
