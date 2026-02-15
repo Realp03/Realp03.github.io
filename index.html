@@ -142,82 +142,110 @@
     </form>
   </div>
 
-  <script>
-    const chatFab = document.getElementById("chatFab");
-    const chatBox = document.getElementById("chatBox");
-    const chatClose = document.getElementById("chatClose");
-    const chatForm = document.getElementById("chatForm");
-    const chatInput = document.getElementById("chatInput");
-    const chatMsgs = document.getElementById("chatMsgs");
+ <script>
+  const chatFab = document.getElementById("chatFab");
+  const chatBox = document.getElementById("chatBox");
+  const chatClose = document.getElementById("chatClose");
+  const chatForm = document.getElementById("chatForm");
+  const chatInput = document.getElementById("chatInput");
+  const chatMsgs = document.getElementById("chatMsgs");
 
-    const replies = {
-      hi: "Hello, Thank you for visiting my Portfolio Website, You are freely to look around to see about myself.",
-      yown: "HAHAHAHAHAHAHA KUPAL",
-      joke: "Sige, anong ang pambansang laro ng pilipinas",
-      ano: "Edi  Scatter HAHAHAHAHAHAHA",
-      Bading: "Mama mo, Bading",
-      love: "I appreciate the kindness 😄 but I’m here to share my professional journey and skills.",
-      relationship: "I prefer to keep my personal life private. Let’s focus on my IT journey and goals!",
-      kantutan: " G mu!!!!!",
-      skills: "My technical skills include HTML, CSS, JavaScript, VB.Net, PHP, Java, and hardware troubleshooting.",
-      contact: "You can contact me through the email or Facebook icon below.",
-      future: "I plan to become a System or Network Administrator in the future.",
-      hobby: "I enjoy playing online games and exploring new technologies.",
-      default: "You can ask me about my skills, hobbies, future plans, or contact information."
-    };
+  let awaitingJokePunchline = false;
 
-    function addMsg(role, text) {
-      const div = document.createElement("div");
-      div.className = "msg " + role;
-      div.textContent = text;
-      chatMsgs.appendChild(div);
-      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  const replies = {
+    hi: "Hello! Thank you for visiting my Portfolio Website. Feel free to explore and learn more about me.",
+    love: "I appreciate the kindness 😄 but I’m here to share my professional journey and skills.",
+    relationship: "I prefer to keep my personal life private. Let’s focus on my IT journey and goals!",
+    skills: "My technical skills include HTML, CSS, JavaScript, VB.Net, PHP, Java, and hardware troubleshooting.",
+    contact: "You can contact me through the email or Facebook icon below.",
+    future: "I plan to become a System or Network Administrator in the future.",
+    hobby: "I enjoy playing online games and exploring new technologies.",
+    default: "You can ask me about my skills, hobbies, future plans, or contact information."
+  };
+
+  function addMsg(role, text) {
+    const div = document.createElement("div");
+    div.className = "msg " + role;
+    div.textContent = text;
+    chatMsgs.appendChild(div);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  }
+
+  chatFab.onclick = () => chatBox.classList.remove("hidden");
+  chatClose.onclick = () => chatBox.classList.add("hidden");
+
+  addMsg("bot", "Hi! I'm Mark Daryl AI. Ask me about my skills, hobbies, or future plans.");
+
+  chatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const raw = chatInput.value.trim();
+    const text = raw.toLowerCase();
+    if (!text) return;
+
+    addMsg("me", raw);
+    chatInput.value = "";
+
+    let reply = replies.default;
+
+    // 🔹 Joke trigger
+    if (text.includes("joke") || text.includes("patawa")) {
+      awaitingJokePunchline = true;
+      reply = "Knock knock...";
     }
 
-    chatFab.onclick = () => chatBox.classList.remove("hidden");
-    chatClose.onclick = () => chatBox.classList.add("hidden");
+    // 🔹 Punchline (only if waiting)
+    else if (awaitingJokePunchline && (text === "ano" || text === "ano?")) {
+      awaitingJokePunchline = false;
+      reply = "Mark who? Mark Daryl — the future System Admin 😎🔥";
+    }
 
-    addMsg("bot", "Hi! I'm Mark Daryl AI. Ask me about my skills, hobbies, or future plans.");
-
-    chatForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const text = chatInput.value.toLowerCase();
-      if (!text) return;
-
-      addMsg("me", chatInput.value);
-      chatInput.value = "";
-
-      let reply = replies.default;
-
-      if (
+    // 🔹 Greetings
+    else if (
       text.startsWith("hi") ||
       text.startsWith("hello") ||
       text.includes("hi po") ||
       text.includes("hello po") ||
-      text.includes("hey") ||
-      text.includes("good morning") ||
-      text.includes("good afternoon") ||
-      text.includes("good evening")
+      text.includes("hey")
     ) {
       reply = replies.hi;
-      }
-      else if (text.includes("skill")) reply = replies.skills;
-      else if (text.includes("joke")) reply = replies.joke;
-      else if (text.includes("ano")) reply = replies.ano;
-      else if (text.includes("bading")) reply = replies.bading;
-      else if (text.includes("contact")) reply = replies.contact;
-      else if (text.includes("yown")) reply = replies.yown;
-      else if (text.includes("kantutan")) reply = replies.kantutan;
-      else if (text.includes("hi")) reply = replies.hi;
-      else if (text.includes("future")) reply = replies.future;
-      else if (text.includes("hobby") || text.includes("game")) reply = replies.hobby;
+    }
 
-      setTimeout(() => addMsg("bot", reply), 500);
-    });
-  </script>
+    // 🔹 Love / Relationship
+    else if (text.includes("love you")) {
+      reply = replies.love;
+    }
+    else if (text.includes("single") || text.includes("ex") || text.includes("relationship")) {
+      reply = replies.relationship;
+    }
+
+    // 🔹 Skills
+    else if (text.includes("skill")) {
+      reply = replies.skills;
+    }
+
+    // 🔹 Contact
+    else if (text.includes("contact") || text.includes("email") || text.includes("facebook") || text.includes("fb")) {
+      reply = replies.contact;
+    }
+
+    // 🔹 Future
+    else if (text.includes("future") || text.includes("plan")) {
+      reply = replies.future;
+    }
+
+    // 🔹 Hobby
+    else if (text.includes("hobby") || text.includes("game")) {
+      reply = replies.hobby;
+    }
+
+    setTimeout(() => addMsg("bot", reply), 500);
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
