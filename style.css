@@ -370,10 +370,14 @@ h2{
 }
 
 @media (max-width: 768px){
-  .scroll-btn{
+  .scroll-btn left{
     display: none;
   }
 
+   .scroll-btn left{
+    display: none;
+  }
+  
   .gallery{
     padding: 10px;
   }
