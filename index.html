@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
+<!-- Lightbox Script -->
 <script>
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
@@ -29,6 +30,15 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeLightbox();
   });
+</script>
+
+<!-- Scroll Gallery Script -->
+<script>
+  function scrollGallery(direction){
+    const gallery = document.getElementById("gallery");
+    const scrollAmount = 250;
+    gallery.scrollLeft += direction * scrollAmount;
+  }
 </script>
 
   
@@ -137,20 +147,20 @@
 <div class="section">
   <h2>Gallery</h2>
 
-  <div class="gallery">
-    <img class="gallery-img" src="images/gallery1.jpg" alt="Gallery photo 1">
-    <img class="gallery-img" src="images/gallery2.jpg" alt="Gallery photo 2">
-    <img class="gallery-img" src="images/gallery3.jpg" alt="Gallery photo 3">
-    <img class="gallery-img" src="images/gallery4.jpg" alt="Gallery photo 4">
-    <img class="gallery-img" src="images/gallery5.jpg" alt="Gallery photo 5">
-    <img class="gallery-img" src="images/gallery6.jpg" alt="Gallery photo 6">
-  </div>
-</div>
+  <div class="gallery-wrapper">
+    <button class="scroll-btn left" onclick="scrollGallery(-1)">❮</button>
 
-<!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox hidden">
-  <button id="lightboxClose" class="lightbox-close">✕</button>
-  <img id="lightboxImg" class="lightbox-img" src="" alt="Preview">
+    <div class="gallery" id="gallery">
+      <img src="images/gallery1.jpg" class="gallery-img" alt="">
+      <img src="images/gallery2.jpg" class="gallery-img" alt="">
+      <img src="images/gallery3.jpg" class="gallery-img" alt="">
+      <img src="images/gallery4.jpg" class="gallery-img" alt="">
+      <img src="images/gallery5.jpg" class="gallery-img" alt="">
+      <img src="images/gallery6.jpg" class="gallery-img" alt="">
+    </div>
+
+    <button class="scroll-btn right" onclick="scrollGallery(1)">❯</button>
+  </div>
 </div>
 
    
@@ -308,6 +318,7 @@
 
 </body>
 </html>
+
 
 
 
