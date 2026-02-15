@@ -370,11 +370,11 @@ h2{
 }
 
 @media (max-width: 768px){
-  .scroll-btn left{
+  .scroll-btn.left{
     display: none;
   }
 
-   .scroll-btn right{
+   .scroll-btn.right{
     display: none;
   }
   
@@ -390,11 +390,11 @@ h2{
     text-align: center;
   }
 
-  .scroll-btn left{
+  .scroll-btn.left{
     display: none;
   }
 
-   .scroll-btn right{
+   .scroll-btn.right{
     display: none;
   }
   
