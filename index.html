@@ -11,14 +11,14 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Stagger fade-in
+    
     const items = document.querySelectorAll(".reveal");
     items.forEach((el, i) => {
       el.style.setProperty("--delay", `${0.12 * i}s`);
     });
     document.body.classList.add("loaded");
 
-    // Fade-out transition
+   
     const links = document.querySelectorAll("a");
     links.forEach(link => {
       if (link.hostname === window.location.hostname) {
@@ -52,7 +52,7 @@
         <a href="about.html" class="about-btn">About Me</a>
       </div>
 
-      <!-- Technical Skills -->
+      
       <div class="section">
         <h2>Technical Skills</h2>
         <ul class="projects">
@@ -77,7 +77,7 @@
         </ul>
       </div>
 
-      <!-- Soft Skills -->
+  
       <div class="section">
         <h2>Soft Skills</h2>
         <ul class="projects">
@@ -108,7 +108,7 @@
         </ul>
       </div>
 
-      <!-- Contact Section -->
+   
       <div class="section">
         <h2>Contact Me</h2>
         <div class="contact">
@@ -125,7 +125,7 @@
     </div>
   </div>
 
-  <!-- FREE AI STYLE CHATBOT -->
+ 
   <div id="chatFab">💬</div>
 
   <div id="chatBox" class="chat hidden">
@@ -151,10 +151,13 @@
   const chatMsgs = document.getElementById("chatMsgs");
 
   let awaitingJokePunchline = false;
+  let awaitingCrushline = false;
 
   const replies = {
     hi: "Hello! Thank you for visiting my Portfolio Website. Feel free to explore and learn more about me.",
     love: "I appreciate the kindness 😄 but I’m here to share my professional journey and skills.",
+    yown: "AHHAHAHAHAHAHA KUPAL",
+    haha: "G MU!!!!!!!",
     relationship: "I prefer to keep my personal life private. Let’s focus on my IT journey and goals!",
     skills: "My technical skills include HTML, CSS, JavaScript, VB.Net, PHP, Java, and hardware troubleshooting.",
     contact: "You can contact me through the email or Facebook icon below.",
@@ -188,7 +191,7 @@
 
     let reply = replies.default;
 
-    // 🔹 Joke trigger
+  
     if (text.includes("joke") || text.includes("patawa")) {
       awaitingJokePunchline = true;
       reply = "Sige, Ano ang Pambansang laro ng Pilipinas";
@@ -201,13 +204,13 @@
     }
 
      if (text.includes("crush") || text.includes("mahal")) {
-      awaitingJokePunchline = true;
+      awaitingCrushline = true;
       reply = "Meron po hehe";
     }
 
  
     else if (awaitingJokePunchline && (text === "sino" || text === "sino?" || text === "who?"|| text === "who?")) {
-      awaitingJokePunchline = false;
+      awaitingCrushline = false;
       reply = "Cybelle Mia ♡♡♡";
     }
 
@@ -229,22 +232,27 @@
       reply = replies.relationship;
     }
 
-    // 🔹 Skills
+   
     else if (text.includes("skill")) {
       reply = replies.skills;
     }
 
-    // 🔹 Contact
+ 
     else if (text.includes("contact") || text.includes("email") || text.includes("facebook") || text.includes("fb")) {
       reply = replies.contact;
     }
 
-    // 🔹 Future
+  
     else if (text.includes("future") || text.includes("plan")) {
       reply = replies.future;
     }
 
-    // 🔹 Hobby
+     else if (text.includes("suntukan") || text.includes("kantutan")) {
+      reply = replies.haha;
+    }
+
+
+   
     else if (text.includes("hobby") || text.includes("game")) {
       reply = replies.hobby;
     }
@@ -255,6 +263,7 @@
 
 </body>
 </html>
+
 
 
 
