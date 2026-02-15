@@ -154,6 +154,7 @@
 
   const replies = {
     hi: "Hello! Thank you for visiting my Portfolio Website. Feel free to explore and learn more about me.",
+    LOML: "One and only, Cybelle Mia.......",
     love: "I appreciate the kindness 😄 but I’m here to share my professional journey and skills.",
     relationship: "I prefer to keep my personal life private. Let’s focus on my IT journey and goals!",
     skills: "My technical skills include HTML, CSS, JavaScript, VB.Net, PHP, Java, and hardware troubleshooting.",
@@ -200,7 +201,6 @@
       reply = "Edi, Scatter AHHAHAHAHAHA TANGINA MO!!!";
     }
 
-    // 🔹 Greetings
     else if (
       text.startsWith("hi") ||
       text.startsWith("hello") ||
@@ -211,7 +211,13 @@
       reply = replies.hi;
     }
 
-    // 🔹 Love / Relationship
+     else if (
+      text.startsWith("Crush") ||
+      text.includes("Mahal") ||
+    ) {
+      reply = replies.LOML;
+    }  
+
     else if (text.includes("love you")) {
       reply = replies.love;
     }
@@ -245,6 +251,7 @@
 
 </body>
 </html>
+
 
 
 
