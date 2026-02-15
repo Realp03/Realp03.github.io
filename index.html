@@ -6,25 +6,26 @@
   <title>My Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
- <script>
+
+<body>
+
+<script>
   document.addEventListener("DOMContentLoaded", () => {
-    // ✅ 1) Stagger fade-in for elements with .reveal
+    // Stagger fade-in
     const items = document.querySelectorAll(".reveal");
     items.forEach((el, i) => {
       el.style.setProperty("--delay", `${0.12 * i}s`);
     });
     document.body.classList.add("loaded");
 
-    // ✅ 2) Fade-out transition for internal links
+    // Fade-out transition
     const links = document.querySelectorAll("a");
     links.forEach(link => {
       if (link.hostname === window.location.hostname) {
         link.addEventListener("click", function (e) {
           e.preventDefault();
           const url = this.href;
-
           document.body.classList.add("fade-out");
-
           setTimeout(() => {
             window.location.href = url;
           }, 400);
@@ -34,8 +35,6 @@
   });
 </script>
 
-
-<body>
   <div class="container">
     <div class="card">
 
@@ -113,25 +112,83 @@
       <div class="section">
         <h2>Contact Me</h2>
         <div class="contact">
-
-          <a href="mailto:pinedamarkdaryl@gmail.com" aria-label="Email Mark Daryl">
+          <a href="mailto:pinedamarkdaryl@gmail.com">
             <img class="email-icon" src="email.png" alt="Email Me" />
           </a>
 
-          <a href="https://web.facebook.com/TheReal2004" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile">
+          <a href="https://web.facebook.com/TheReal2004" target="_blank">
             <img class="email-icon" src="FB.png" alt="Facebook" />
           </a>
-
         </div>
       </div>
 
     </div>
   </div>
+
+  <!-- FREE AI STYLE CHATBOT -->
+  <div id="chatFab">💬</div>
+
+  <div id="chatBox" class="chat hidden">
+    <div class="chatHeader">
+      <b>Mark Daryl AI</b>
+      <button id="chatClose">✕</button>
+    </div>
+
+    <div id="chatMsgs" class="chatMsgs"></div>
+
+    <form id="chatForm" class="chatForm">
+      <input id="chatInput" placeholder="Ask me something..." autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    const chatFab = document.getElementById("chatFab");
+    const chatBox = document.getElementById("chatBox");
+    const chatClose = document.getElementById("chatClose");
+    const chatForm = document.getElementById("chatForm");
+    const chatInput = document.getElementById("chatInput");
+    const chatMsgs = document.getElementById("chatMsgs");
+
+    const replies = {
+      skills: "My technical skills include HTML, CSS, JavaScript, VB.Net, PHP, Java, and hardware troubleshooting.",
+      contact: "You can contact me through the email or Facebook icon below.",
+      future: "I plan to become a System or Network Administrator in the future.",
+      hobby: "I enjoy playing online games and exploring new technologies.",
+      default: "You can ask me about my skills, hobbies, future plans, or contact information."
+    };
+
+    function addMsg(role, text) {
+      const div = document.createElement("div");
+      div.className = "msg " + role;
+      div.textContent = text;
+      chatMsgs.appendChild(div);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+
+    chatFab.onclick = () => chatBox.classList.remove("hidden");
+    chatClose.onclick = () => chatBox.classList.add("hidden");
+
+    addMsg("bot", "Hi! I'm Mark Daryl AI. Ask me about my skills, hobbies, or future plans.");
+
+    chatForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const text = chatInput.value.toLowerCase();
+      if (!text) return;
+
+      addMsg("me", chatInput.value);
+      chatInput.value = "";
+
+      let reply = replies.default;
+
+      if (text.includes("skill")) reply = replies.skills;
+      else if (text.includes("contact")) reply = replies.contact;
+      else if (text.includes("future")) reply = replies.future;
+      else if (text.includes("hobby") || text.includes("game")) reply = replies.hobby;
+
+      setTimeout(() => addMsg("bot", reply), 500);
+    });
+  </script>
+
 </body>
 </html>
-
-
-
-
-
-
