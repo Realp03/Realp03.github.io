@@ -34,52 +34,6 @@
   });
 </script>
 
- 
-
-<script>
-  const chatFab = document.getElementById("chatFab");
-  const chatBox = document.getElementById("chatBox");
-  const chatClose = document.getElementById("chatClose");
-  const chatForm = document.getElementById("chatForm");
-  const chatInput = document.getElementById("chatInput");
-  const chatMsgs = document.getElementById("chatMsgs");
-
-  const addMsg = (role, text) => {
-    const div = document.createElement("div");
-    div.className = "msg " + role;
-    div.textContent = text;
-    chatMsgs.appendChild(div);
-    chatMsgs.scrollTop = chatMsgs.scrollHeight;
-  };
-
-  chatFab.onclick = () => chatBox.classList.remove("hidden");
-  chatClose.onclick = () => chatBox.classList.add("hidden");
-
-  addMsg("bot", "Hi! I’m Mark Daryl AI. Ask me about my skills, projects, or plans.");
-
-  chatForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const text = chatInput.value.trim();
-    if (!text) return;
-
-    addMsg("me", text);
-    chatInput.value = "";
-
-    addMsg("bot", "Typing...");
-
-    try {
-      const res = await fetch("YOUR_BACKEND_ENDPOINT", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text })
-      });
-      const data = await res.json();
-      chatMsgs.lastChild.textContent = data.reply || "Sorry, I couldn't reply right now.";
-    } catch {
-      chatMsgs.lastChild.textContent = "Error: backend not reachable.";
-    }
-  });
-</script>
 
 <body>
   <div class="container">
@@ -172,28 +126,10 @@
       </div>
 
     </div>
-    
-     <div id="chatFab">💬</div>
-
-<div id="chatBox" class="chat hidden">
-  <div class="chatHeader">
-    <div>
-      <b>Mark Daryl AI</b>
-      <div class="chatSub">Ask me about my skills & projects</div>
-    </div>
-    <button id="chatClose">✕</button>
-  </div>
-
-  <div id="chatMsgs" class="chatMsgs"></div>
-
-  <form id="chatForm" class="chatForm">
-    <input id="chatInput" placeholder="Type a message..." autocomplete="off" />
-    <button type="submit">Send</button>
-  </form>
-</div>
   </div>
 </body>
 </html>
+
 
 
 
