@@ -154,7 +154,6 @@
 
   const replies = {
     hi: "Hello! Thank you for visiting my Portfolio Website. Feel free to explore and learn more about me.",
-    LOML: "One and only, Cybelle Mia.......",
     love: "I appreciate the kindness 😄 but I’m here to share my professional journey and skills.",
     relationship: "I prefer to keep my personal life private. Let’s focus on my IT journey and goals!",
     skills: "My technical skills include HTML, CSS, JavaScript, VB.Net, PHP, Java, and hardware troubleshooting.",
@@ -195,10 +194,21 @@
       reply = "Sige, Ano ang Pambansang laro ng Pilipinas";
     }
 
-    // 🔹 Punchline (only if waiting)
+    
     else if (awaitingJokePunchline && (text === "ano" || text === "ano?")) {
       awaitingJokePunchline = false;
       reply = "Edi, Scatter AHHAHAHAHAHA TANGINA MO!!!";
+    }
+
+     if (text.includes("crush") || text.includes("mahal")) {
+      awaitingJokePunchline = true;
+      reply = "Meron po hehe";
+    }
+
+ 
+    else if (awaitingJokePunchline && (text === "sino" || text === "sino?" || text === "who?"|| text === "who?")) {
+      awaitingJokePunchline = false;
+      reply = "Cybelle Mia ♡♡♡";
     }
 
     else if (
@@ -211,12 +221,6 @@
       reply = replies.hi;
     }
 
-     else if (
-      text.startsWith("Crush") ||
-      text.includes("Mahal") ||
-    ) {
-      reply = replies.LOML;
-    }  
 
     else if (text.includes("love you")) {
       reply = replies.love;
@@ -251,6 +255,7 @@
 
 </body>
 </html>
+
 
 
 
