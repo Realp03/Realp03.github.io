@@ -13,57 +13,9 @@
   padding:10px 46px; 
 }
 
-
-
-
-.image-modal img{
-  max-width:90%;
-  max-height:80vh;
-  border-radius:16px;
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
-}
-
 .hidden{
   display:none;
 }
-
-.image-modal{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.85);
-  z-index: 9999;
-
-  /* PERFECT CENTER */
-  display: grid;
-  place-items: center;
-
-  padding: 20px;
-}
-
-#modalImg{
-  max-width: 92vw;
-  max-height: 86vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.6);
-}
-
-/* make Back button not affect centering */
-.modal-back{
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: rgba(15,27,51,.85);
-  border: none;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
 
 .gallery-wrapper{
   position:relative;
