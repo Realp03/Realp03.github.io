@@ -390,6 +390,14 @@ h2{
     text-align: center;
   }
 
+  .scroll-btn left{
+    display: none;
+  }
+
+   .scroll-btn right{
+    display: none;
+  }
+  
   .profile-pic{
     width:90px;
     height:90px;
