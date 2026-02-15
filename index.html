@@ -183,7 +183,19 @@
 
       let reply = replies.default;
 
-      if (text.includes("skill")) reply = replies.skills;
+      if (
+      text.startsWith("hi") ||
+      text.startsWith("hello") ||
+      text.includes("hi po") ||
+      text.includes("hello po") ||
+      text.includes("hey") ||
+      text.includes("good morning") ||
+      text.includes("good afternoon") ||
+      text.includes("good evening")
+    ) {
+      reply = replies.hi;
+
+      else if (text.includes("skill")) reply = replies.skills;
       else if (text.includes("contact")) reply = replies.contact;
       else if (text.includes("kantutan")) reply = replies.kantutan;
       else if (text.includes("hi")) reply = replies.hi;
@@ -196,5 +208,6 @@
 
 </body>
 </html>
+
 
 
