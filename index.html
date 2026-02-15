@@ -129,15 +129,7 @@
     <button class="scroll-btn right" onclick="scrollGallery(1)">❯</button>
   </div>
 </div>
-
-
-<div id="imageModal" class="image-modal hidden">
-  <button class="modal-back" id="modalBack">← Back</button>
-  <img id="modalImg" src="" alt="Full Preview">
-</div>
-
-
-   
+      
       <div class="section">
         <h2>Contact Me</h2>
         <div class="contact">
@@ -172,47 +164,11 @@
   </div>
 
 <script>
-  // Scroll buttons
   function scrollGallery(direction){
     const gallery = document.getElementById("gallery");
     const scrollAmount = 250;
     gallery.scrollLeft += direction * scrollAmount;
   }
-
-  // Fullscreen preview (runs after page loads)
-  document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    const modalBack = document.getElementById("modalBack");
-
-    // safety check
-    if (!modal || !modalImg || !modalBack) return;
-
-    document.querySelectorAll(".gallery-img").forEach(img => {
-      img.addEventListener("click", () => {
-        modalImg.src = img.src;
-        modal.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-      });
-    });
-
-    const closeModal = () => {
-      modal.classList.add("hidden");
-      document.body.style.overflow = "auto";
-    };
-
-    modalBack.addEventListener("click", closeModal);
-
-    // click outside image to close
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    // ESC to close
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
-  });
 </script>
 
   
@@ -337,6 +293,7 @@
 
 </body>
 </html>
+
 
 
 
