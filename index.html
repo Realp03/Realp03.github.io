@@ -8,41 +8,7 @@
 </head>
 
 
-<script>
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImg");
-  const modalBack = document.getElementById("modalBack");
 
-  document.querySelectorAll(".gallery-img").forEach(img => {
-    img.addEventListener("click", () => {
-      modalImg.src = img.src;
-      modal.classList.remove("hidden");
-      document.body.style.overflow = "hidden";
-    });
-  });
-
-  modalBack.addEventListener("click", () => {
-    modal.classList.add("hidden");
-    document.body.style.overflow = "auto";
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      modal.classList.add("hidden");
-      document.body.style.overflow = "auto";
-    }
-  });
-</script>
-
-<script>
-  function scrollGallery(direction){
-    const gallery = document.getElementById("gallery");
-    const scrollAmount = 250;
-    gallery.scrollLeft += direction * scrollAmount;
-  }
-</script>
-
-  
 <body>
 
 <script>
@@ -205,6 +171,51 @@
     </form>
   </div>
 
+<script>
+  // Scroll buttons
+  function scrollGallery(direction){
+    const gallery = document.getElementById("gallery");
+    const scrollAmount = 250;
+    gallery.scrollLeft += direction * scrollAmount;
+  }
+
+  // Fullscreen preview (runs after page loads)
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalBack = document.getElementById("modalBack");
+
+    // safety check
+    if (!modal || !modalImg || !modalBack) return;
+
+    document.querySelectorAll(".gallery-img").forEach(img => {
+      img.addEventListener("click", () => {
+        modalImg.src = img.src;
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    const closeModal = () => {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "auto";
+    };
+
+    modalBack.addEventListener("click", closeModal);
+
+    // click outside image to close
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // ESC to close
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  });
+</script>
+
+  
  <script>
   const chatFab = document.getElementById("chatFab");
   const chatBox = document.getElementById("chatBox");
@@ -326,6 +337,7 @@
 
 </body>
 </html>
+
 
 
 
