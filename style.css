@@ -9,6 +9,11 @@
   --blue2:#60a5fa;
 }
 
+.gallery{
+  padding:10px 46px; 
+}
+
+
 .image-modal{
   position:fixed;
   inset:0;
