@@ -370,11 +370,11 @@ h2{
 }
 
 @media (max-width: 768px){
-  .scroll-btn left{
+  .scroll-btn{
     display: none;
   }
 
-   .scroll-btn left{
+   .scroll-btn{
     display: none;
   }
   
