@@ -369,12 +369,32 @@ h2{
   font-size: 13px;
 }
 
+@media (max-width: 768px){
+  .scroll-btn{
+    display: none;
+  }
+
+  .gallery{
+    padding: 10px; /* alisin extra space since wala na arrows */
+  }
+}
+
+
 @media (max-width: 600px){
   .header{
     flex-direction: column;
     text-align: center;
   }
 
+
+   .scroll-btn{
+    display: none;
+  }
+
+  .gallery{
+    padding: 10px; /* alisin extra space since wala na arrows */
+  }
+  
   .profile-pic{
     width:90px;
     height:90px;
