@@ -9,30 +9,6 @@
 
 
 <script>
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightboxImg");
-  const lightboxClose = document.getElementById("lightboxClose");
-
-  document.querySelectorAll(".gallery-img").forEach(img => {
-    img.addEventListener("click", () => {
-      lightboxImg.src = img.src;
-      lightbox.classList.remove("hidden");
-    });
-  });
-
-  const closeLightbox = () => lightbox.classList.add("hidden");
-
-  lightboxClose.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeLightbox();
-  });
-</script>
-
-<script>
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImg");
   const modalBack = document.getElementById("modalBack");
@@ -41,7 +17,7 @@
     img.addEventListener("click", () => {
       modalImg.src = img.src;
       modal.classList.remove("hidden");
-      document.body.style.overflow = "hidden"; // prevent background scroll
+      document.body.style.overflow = "hidden";
     });
   });
 
@@ -58,7 +34,6 @@
   });
 </script>
 
-  
 <script>
   function scrollGallery(direction){
     const gallery = document.getElementById("gallery");
@@ -351,6 +326,7 @@
 
 </body>
 </html>
+
 
 
 
